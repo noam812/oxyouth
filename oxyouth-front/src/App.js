@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 //Software-middleware imports
 import "./App.scss";
-import { useLocation } from "react-router-dom";
+import { BrowserRouter as Router, useLocation } from "react-router-dom";
 // Logostic imports
 import Footer from "./Footer";
 import Header from "./components/Header/Header";
@@ -36,7 +36,8 @@ function App() {
     <Suspense fallback={<div>"loading"</div>}>
       <div className="App">
         <Header logo={Logo} t={t} lng={lng} />
-          <Main lng={lng} />
+
+        <Main lng={lng} />
 
         <Footer lng={lng} />
       </div>

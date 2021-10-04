@@ -13,9 +13,7 @@ function ProductSinglePage({ lng }) {
   const [productsData, setProductsData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const { id } = useParams();
-  
 
-  
   const { t } = useTranslation("singleProduct");
   const lang = lng;
   useEffect(() => {
@@ -25,7 +23,6 @@ function ProductSinglePage({ lng }) {
         const res = await client.get(`/${id}`);
         setProductsData(res.data);
         console.log("resData", res.data);
-        console.log({ productsData });
       } catch (err) {
         console.error(err);
       } finally {
@@ -33,6 +30,7 @@ function ProductSinglePage({ lng }) {
       }
     };
     getProducts();
+    console.log({ productsData });
   }, []);
 
   return (
@@ -47,7 +45,7 @@ function ProductSinglePage({ lng }) {
         />
       ) : (
         <div>
-          <img src={productsData.image} alt="image" />;
+          <img src={productsData.image} alt="product_pic" />;
           <h1>
             {lang === "he"
               ? productsData.title
@@ -60,13 +58,20 @@ function ProductSinglePage({ lng }) {
           </p>
           <ul>
             <li>
-              {t("pressure") ? productsData.pressure : productsData.translations.ar.pressureAr}
+              {t("pressure")} :{" "}
+              {lang === "he"
+                ? productsData.pressure
+                : productsData.translations.ar.pressureAr}
             </li>
             <li>
-              {t("weight") ? productsData.weight : productsData.translations.ar.weightAr}
+              {t("weight")} :{" "}
+              {lang === "he"
+                ? productsData.weight
+                : productsData.translations.ar.weightAr}
             </li>
             <li>
-              {t("type")} : {productsData.type}
+              {t("type")} :{" "}
+              {lang === "he" ? productsData.type : productsData.translations.ar.typeAr}
             </li>
           </ul>
         </div>

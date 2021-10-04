@@ -21,16 +21,18 @@ async function main() {
   });
 
   const productsRoute = require("./routes/products");
+  const sliderRoute = require("./routes/sliderImages");
+  const articlesRoute = require("./routes/articles");
+  const contactRoute = require("./routes/contact");
+  
 
   app.use("/api/products", productsRoute);
 
-  const sliderRoute = require("./routes/sliderImages");
-
   app.use("/api/slider", sliderRoute);
 
-  const articlesRoute = require("./routes/articles");
-
   app.use("/api/articles", articlesRoute);
+
+  app.use("/api/contact", contactRoute);
 
   app.listen(PORT, () => console.log("listening"));
 }

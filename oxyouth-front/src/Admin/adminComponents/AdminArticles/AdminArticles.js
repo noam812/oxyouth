@@ -6,7 +6,6 @@ import EditorToolbar, { modules, formats } from "./EditorToolbar";
 
 import Loader from "react-loader-spinner";
 import { AiFillDelete } from "react-icons/ai";
-import Slider from "./../../../components/pages/homepage/HomePageComp/Slider";
 
 const client = axios.create({
   baseURL: "http://localhost:3001/api/articles",
@@ -24,16 +23,6 @@ function AdminArticles() {
     contentAr: "",
   });
 
-  const schemaAdaptation = {
-    title: "",
-    content: "",
-    translations: {
-      ar: {
-        titleAr: "",
-        contentAr: "",
-      },
-    },
-  };
 
   const handleChange = (e) => {
     setSpecificArt((x) => ({ ...x, title: e.target.value }));

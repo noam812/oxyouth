@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
-import AdminSlider from "./AdmonComp.js/AdminSlider";
-import AdminProducts from "./AdmonComp.js/AdminProducts";
-import AdminArticles from "./AdmonComp.js/Admin ARticles/AdminArticles";
+import React, { useState } from "react";
+import AdminSlider from "./adminComponents/AdminSlider";
+import AdminProducts from "./adminComponents/AdminProducts";
+import AdminArticles from "./adminComponents/AdminArticles/AdminArticles";
+import Messages from "./adminComponents/Messages";
 
 function Admin() {
   const [active, setActive] = useState("");
@@ -18,8 +18,8 @@ function Admin() {
     if (active === "articles") {
       return <AdminArticles />;
     }
-    if (active === "massages") {
-      return <h1>massages</h1>;
+    if (active === "messages") {
+      return <Messages />;
     }
   };
 
@@ -37,7 +37,7 @@ function Admin() {
             <li className="item" onClick={() => setActive(`slider`)}>
               תמונות
             </li>
-            <li className="item" onClick={() => setActive(`massages`)}>
+            <li className="item" onClick={() => setActive(`messages`)}>
               הודעות שהגיעו
             </li>
           </ul>

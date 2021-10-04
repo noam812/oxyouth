@@ -1,11 +1,13 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
+import { useTranslation } from 'react-i18next';
 
-function Navbar({ t, lng }) {
+function Navbar({  lng }) {
   const location = useLocation().pathname;
 
   const lang = lng;
 
+  const {t} =  useTranslation("translation")
   const activeclassHandler = (id) => {
     if (location === id) {
       return "navbar item_active";
@@ -15,10 +17,10 @@ function Navbar({ t, lng }) {
   };
 
   const handleLink = (lang, linkstr = ``) => {
-    if (lang == "he") {
+    if (lang === "he") {
       return `/${linkstr}`;
     }
-    if (lng == "ar") {
+    if (lng === "ar") {
       return `/${lang}/${linkstr}`;
     }
   };

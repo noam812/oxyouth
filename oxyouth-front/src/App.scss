@@ -239,6 +239,13 @@ $FontSize: 18px;
     margin: 2rem;
   }
 }
+
+.article {
+  position: relative;
+  top: 5em;
+  text-align: right;
+}
+
 .contact {
   position: relative;
   top: 5em;
@@ -373,6 +380,60 @@ $FontSize: 18px;
         color: red;
         font-size: 13px;
       }
+    }
+  }
+}
+
+.messages {
+  display: flex;
+  position: relative;
+
+  .display {
+    display: flex;
+    width: -webkit-fill-available;
+    align-content: stretch;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    .details {
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: row;
+      align-items: center;
+      width: -webkit-fill-available;
+      justify-content: center;
+    }
+    .content {
+      display: flex;
+      flex-direction: column;
+    }
+    p {
+      padding: 0.5em;
+    }
+  }
+  .sidebar {
+    display: flex;
+    flex-direction: column;
+    align-content: flex-end;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-end;
+    width: fit-content;
+  }
+
+  .message {
+    display: flex;
+    border: 2px solid black;
+    width: 450px;
+    flex-direction: row;
+    justify-content: space-between;
+
+    p {
+      padding: 0.5em;
+    }
+
+    button {
+      position: relative;
     }
   }
 }

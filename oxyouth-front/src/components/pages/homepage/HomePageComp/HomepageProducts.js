@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+
 const client = axios.create({
   baseURL: "http://localhost:3001/api/products",
 });
@@ -14,15 +15,12 @@ function HomepageProducts({ lng }) {
   const { t } = useTranslation("productsection");
   useEffect(() => {
     const getProducts = async () => {
-      setIsLoading(true);
       try {
         const res = await client.get("/");
         setProductsData(res.data);
       } catch (err) {
         console.error(err);
-      } finally {
-        setIsLoading(false);
-      }
+      } 
     };
     getProducts();
   }, []);
@@ -41,7 +39,7 @@ function HomepageProducts({ lng }) {
               }
             >
               <div className="card" key={index}>
-                <img src={product.image} className="image" />
+                <img src={product.image} className="image" key={index} />
                 <h2>
                   {lang === "he"
                     ? product.title

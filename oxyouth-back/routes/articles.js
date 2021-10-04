@@ -1,7 +1,7 @@
 const express = require("express");
 const mongodb = require("mongodb");
 const router = express.Router();
-const ArticleModel = require("../models/article")
+const ArticleModel = require("../models/article");
 
 router.get("/", async (req, res) => {
   try {
@@ -9,6 +9,15 @@ router.get("/", async (req, res) => {
     res.send(articlesData);
   } catch (err) {
     console.error(err);
+  }
+});
+
+router.get("/:id", async (req, res) => {
+  try {
+    const articleData = await ArticleModel.findById(req.params.id);
+    res.send(articleData);
+  } catch (err) {
+    console.log(err);
   }
 });
 
@@ -24,7 +33,7 @@ router.delete("/:id", async (req, res) => {
 });
 
 router.post("/", async (req, res) => {
-  const article =  new ArticleModel({
+  const article = new ArticleModel({
     title: req.body.title,
     content: req.body.content,
     translations: {

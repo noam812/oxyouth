@@ -32,7 +32,7 @@ function Products({ lng }) {
     <div className="products">
       <h1>{t("header")}</h1>
       <div className="grid">
-        { isLoading === true ? (
+        {isLoading === true ? (
           <Loader
             type="Puff"
             color="#00BFFF"
@@ -40,32 +40,33 @@ function Products({ lng }) {
             width={100}
             visible={isLoading}
           />
-        ) :
-        productsData.map((product, index) => {
-          return (
-            <Link
-              to={
-                lang === "he"
-                  ? `/products/${product._id}`
-                  : `/ar/products/${product._id}`
-              }
-            >
-              <div className="card" key={index}>
-                <img src={product.image} className="image" />
-                <h2>
-                  {lang === "he"
-                    ? product.title
-                    : product.translations.ar.titleAr}
-                </h2>
-                <p>
-                  {lang === "he"
-                    ? product.desc
-                    : product.translations.ar.descAr}
-                </p>
-              </div>
-            </Link>
-          );
-        })}
+        ) : (
+          productsData.map((product, index) => {
+            return (
+              <Link
+                to={
+                  lang === "he"
+                    ? `/products/${product._id}`
+                    : `/ar/products/${product._id}`
+                }
+              >
+                <div className="card" key={index}>
+                  <img src={product.image} className={`image${index}`} />
+                  <h2>
+                    {lang === "he"
+                      ? product.title
+                      : product.translations.ar.titleAr}
+                  </h2>
+                  <p>
+                    {lang === "he"
+                      ? product.desc
+                      : product.translations.ar.descAr}
+                  </p>
+                </div>
+              </Link>
+            );
+          })
+        )}
       </div>
     </div>
   );

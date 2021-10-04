@@ -12,19 +12,21 @@ const client = axios.create({
 function Contact() {
   const [isLoading, setIsLoading] = useState(false);
   const { t } = useTranslation("contact");
+
   return (
     <div className="contact">
       <h2>{t("header")}</h2>
       <Formik
         initialValues={{
-          fullName: "",
+          fullname: "",
           phone: "",
           email: "",
           subject: "",
           content: "",
+          opened: false,
         }}
         validationSchema={Yup.object({
-          fullName: Yup.string().required(
+          fullname: Yup.string().required(
             <div className="error">*Required</div>
           ),
           phone: Yup.string().required(<div className="error">*Required</div>),
@@ -42,6 +44,7 @@ function Contact() {
           setIsLoading(true);
           try {
             const res = await client.post("/", values);
+            console.log(res);
           } catch (err) {
             console.error(err);
           } finally {
@@ -74,7 +77,7 @@ function Contact() {
             <label className="label" htmlFor="content">
               {t("content")}
             </label>
-            <Field className="field textarea" name="content" as="textarea" />
+            <Field className="field textarea" name="content" />
             <ErrorMessage className="error" name="content" />
           </div>
           {isLoading === true ? (
@@ -87,7 +90,8 @@ function Contact() {
             />
           ) : (
             <button type="submit" className="submit">
-              הוסף
+              {" "}
+              שלח פנייה
             </button>
           )}
         </Form>
