@@ -5,6 +5,7 @@ import * as Yup from "yup";
 import { AiFillDelete } from "react-icons/ai";
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import Loader from "react-loader-spinner";
+import Uploader from "../../components/Uploader";
 
 //Creating axios instance - URL to our Server Route for slider.
 const client = axios.create({
@@ -123,11 +124,22 @@ function AdminSlider() {
             }
           }}
         >
-          <Form className="form">
+          {({
+         values,
+         errors,
+         touched,
+         handleChange,
+         handleBlur,
+         handleSubmit,
+         isSubmitting,
+         setFieldValue
+         /* and other goodies */
+       }) =>( <Form className="form">
             <div className="form_table">
               <label className="label" htmlFor="image">
                 קישור לתמונה
               </label>
+              <Uploader onUploaded={url => setFieldValue('image', url)}/>
               <Field
                 className="field"
                 name="image"
@@ -151,7 +163,7 @@ function AdminSlider() {
               </label>
               <Field className="field" name="translations.ar.descAr" />
               <ErrorMessage className="error" name="translations.ar.descAr" />
-              <label className="label" htmlFor="translations.ar.descAr">
+              <label className="label" htmlFor="translations.ar.linkAr">
                 תרגום :קישור
               </label>
               <Field className="field" name="translations.ar.linkAr" />
@@ -169,8 +181,9 @@ function AdminSlider() {
               <button type="submit" className="submit">
                 הוסף
               </button>
-            )}
+              )}
           </Form>
+          )}
         </Formik>
       </div>
     </>

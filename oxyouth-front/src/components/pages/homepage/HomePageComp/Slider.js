@@ -12,7 +12,7 @@ const client = axios.create({
 function Slider({ lng }) {
   const [sliderData, setSliderData] = useState([]);
   const [current, setCurrent] = useState(0);
-  const [loading, setLoading] = useState(false);
+  const [isLoading, setLoading] = useState(false);
   const lang = lng;
 
   const length = sliderData.length;
@@ -56,25 +56,26 @@ function Slider({ lng }) {
 
   return (
     <div className="slider">
-      {loading === true ? (
+      {isLoading === true ? (
         <Loader
           type="Puff"
           color="#00BFFF"
           height={100}
           width={100}
-          visible={loading}
+          visible={isLoading}
         />
       ) : (
         <>
           <FaArrowAltCircleRight className="right-arrow" onClick={nextSlide} />
           <FaArrowAltCircleLeft className="left-arrow" onClick={prevSlide} />
+
           {sliderData.map((slide, index) => {
             return (
               <div
                 className={index === current ? "slide active" : "slide"}
                 key={index + 1}
               >
-                {index === current && ( 
+                {
                   <>
                     <img
                       src={slide.image}
@@ -83,7 +84,9 @@ function Slider({ lng }) {
                     />
                     <Link
                       to={
-                        lang === "he" ? slide.link : slide.translations.ar.linkAr
+                        lang === "he"
+                          ? slide.link
+                          : slide.translations.ar.linkAr
                       }
                     >
                       <h1 className="desc">
@@ -93,7 +96,7 @@ function Slider({ lng }) {
                       </h1>
                     </Link>
                   </>
-               )} 
+                }
               </div>
             );
           })}

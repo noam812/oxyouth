@@ -36,7 +36,7 @@ function Main({ lng }) {
   };
 
   const FaqPage = () => {
-    return <Faq />;
+    return <Faq lng={lang}  />;
   };
 
   const AdminPage = () => {

@@ -2,6 +2,16 @@
 $myFont: "Open Sans Hebrew", sans-serif;
 $FontSize: 18px;
 
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+}
+
 #root {
   width: 100%;
 }
@@ -23,12 +33,10 @@ $FontSize: 18px;
 
 .page.home {
   width: 100%;
-  max-width: 1920px;
 }
 .header {
   background-color: rgb(255, 255, 255);
   width: 100%;
-  max-width: 1920px;
   display: inline-flex;
   justify-content: space-around;
   align-items: center;
@@ -46,18 +54,18 @@ $FontSize: 18px;
       padding-left: 1rem;
       padding-right: 1rem;
       border: none;
-      background-color: rgba(175, 107, 44, 0.568);
+      background-color: #c3a68c;
       height: 100%;
       color: white;
     }
 
     .btn:hover {
-      animation: btnTransAnimation 2s;
+      animation: btnTransAnimation 1s ease-in;
       background-color: rgba(226, 142, 64, 0.849);
     }
     @keyframes btnTransAnimation {
       from {
-        background-color: rgba(175, 107, 44, 0.568);
+        background-color: #c3a68c;
       }
       to {
         background-color: rgba(226, 142, 64, 0.849);
@@ -87,23 +95,22 @@ $FontSize: 18px;
       .item::after {
         display: block;
         content: "";
-        border-bottom: 2px solid rgba(175, 107, 44, 0.568);
+        border-bottom: 2px solid #c3a68c;
         transform: scaleX(0);
-        transition: transform 250ms ease-in-out;
+        transition: transform 500ms ease-in-out;
       }
 
       .item:hover::after {
         transform: scaleX(1);
       }
       .item:hover {
-        animation: itemAnimation 1s;
-        color: rgba(226, 142, 64, 0.849);
+        animation: itemAnimation 500ms ease-in-out;
+        color: #c3a68c;
       }
 
       .item_active {
-        font-size: 1.618rem;
-        border-bottom: 2px solid rgba(226, 142, 64, 0.849);
-        color: rgba(226, 142, 64, 0.849);
+        border-bottom: 2px solid #c3a68c;
+        color: #d3a780;
 
         @keyframes itemAnimation {
           from {
@@ -122,13 +129,11 @@ $FontSize: 18px;
 }
 .slider {
   position: relative;
-  top: 5em;
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
   overflow: hidden;
-  width: 100vw;
+  top: 5em;
+  display: inline-block;  
   height: 61.8vh;
+  width: 100%;
 
   .right-arrow {
     position: absolute;
@@ -173,11 +178,16 @@ $FontSize: 18px;
     }
   }
 
+  img {
+    height: 61.8vh;
+    width: 100%;
+  }
   .active {
     position: relative;
-    animation: slideAnimation 1s;
+    // animation: slideAnimation 1s;
     opacity: 1;
   }
+
   @keyframes slideAnimation {
     from {
       opacity: 0.5;
@@ -194,7 +204,7 @@ $FontSize: 18px;
   position: relative;
   top: 5em;
   background-color: transparent;
-  width: 100vw;
+  width: 100%;
 
   .grid {
     display: grid;
@@ -202,12 +212,13 @@ $FontSize: 18px;
     align-items: center;
     justify-content: center;
     justify-items: center;
-    margin: 2rem;
+    padding: 1.5rem;
   }
 
   .card {
-    border: 2px solid rgba(90, 177, 87, 0.781);
+    border: 2px solid #bcd180;
     border-radius: 5%;
+    margin:2rem
   }
 
   .image {
@@ -217,15 +228,14 @@ $FontSize: 18px;
 .about {
   position: relative;
   top: 5em;
-  background-color: rgba(90, 177, 87, 0.781);
-  width: 100vw;
+  background-color: #bcd180;
   color: white;
   padding: 1em;
 }
 .articles {
   position: relative;
   top: 5em;
-  background-color: rgb(182, 180, 93);
+  background-color: #9dc6da;
   width: inherit;
   display: flex;
   flex-direction: column;
@@ -276,7 +286,7 @@ $FontSize: 18px;
 .footer {
   position: relative;
   top: 5em;
-  background-color: rgba(220, 232, 238, 0.781);
+  background-color: #9dc6da;
   display: inline-flex;
   width: inherit;
   flex-direction: row;

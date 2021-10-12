@@ -24,7 +24,7 @@ async function main() {
   const sliderRoute = require("./routes/sliderImages");
   const articlesRoute = require("./routes/articles");
   const contactRoute = require("./routes/contact");
-  
+  const faqRoute = require("./routes/faq");
 
   app.use("/api/products", productsRoute);
 
@@ -33,6 +33,8 @@ async function main() {
   app.use("/api/articles", articlesRoute);
 
   app.use("/api/contact", contactRoute);
+  
+  app.use("/api/faq", faqRoute);
 
   app.listen(PORT, () => console.log("listening"));
 }

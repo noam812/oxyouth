@@ -33,7 +33,6 @@ function App() {
   }, [location]);
 
   return (
-    <Suspense fallback={<div>"loading"</div>}>
       <div className="App">
         <Header logo={Logo} t={t} lng={lng} />
 
@@ -41,7 +40,6 @@ function App() {
 
         <Footer lng={lng} />
       </div>
-    </Suspense>
   );
 }
 

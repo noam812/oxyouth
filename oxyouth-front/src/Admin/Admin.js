@@ -3,6 +3,7 @@ import AdminSlider from "./adminComponents/AdminSlider";
 import AdminProducts from "./adminComponents/AdminProducts";
 import AdminArticles from "./adminComponents/AdminArticles/AdminArticles";
 import Messages from "./adminComponents/Messages";
+import Faq from "./adminComponents/faq";
 
 function Admin() {
   const [active, setActive] = useState("");
@@ -20,6 +21,9 @@ function Admin() {
     }
     if (active === "messages") {
       return <Messages />;
+    }
+    if (active === "faq") {
+      return <Faq/>;
     }
   };
 
@@ -39,6 +43,9 @@ function Admin() {
             </li>
             <li className="item" onClick={() => setActive(`messages`)}>
               הודעות שהגיעו
+            </li>
+            <li className="item" onClick={() => setActive(`faq`)}>
+              שאלות נפוצות
             </li>
           </ul>
         </div>

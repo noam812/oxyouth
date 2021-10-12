@@ -12,8 +12,9 @@ function Masseges() {
   const [activeMessage, setActiveMessage] = useState(null);
 
   const handleDisplay = (active) => {
-    console.log(active);
     setActiveMessage(active);
+    console.log(active);
+    setActiveMessage((x) => ({ ...x, opened: true }));
     console.log(activeMessage);
   };
   useEffect(() => {
@@ -43,7 +44,7 @@ function Masseges() {
               <p>טלפון : {activeMessage.phone}</p>
               <p>אימייל : {activeMessage.email}</p>
             </div>
-            <div className='content'>
+            <div className="content">
               <p>נושא : {activeMessage.subject}</p>
               <p>תוכן הפנייה : {activeMessage.content}</p>
             </div>
@@ -62,11 +63,17 @@ function Masseges() {
         ) : (
           messagesData.map((message, index) => {
             return (
-              <div className="message">
+              <div
+                className={
+                  message.opened === true ? "message opened" : "message"
+                }
+              >
                 <p>{message.fullname}</p>
                 <p>{message.phone}</p>
                 <p>{message.email}</p>
-                <button  onClick={() => handleDisplay(message)}>פתח</button>
+                <button onClick={() => handleDisplay(message)}>
+                  {message.opened === false ? "נקראה" : "פתח"}
+                </button>
               </div>
             );
           })
