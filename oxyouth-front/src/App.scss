@@ -31,7 +31,7 @@ html {
   width: 100%;
 }
 
-.page.home {
+.page .home {
   width: 100%;
 }
 .header {
@@ -127,11 +127,12 @@ html {
     height: 150px;
   }
 }
+
 .slider {
   position: relative;
   overflow: hidden;
   top: 5em;
-  display: inline-block;  
+  display: -webkit-inline-box;
   height: 61.8vh;
   width: 100%;
 
@@ -167,7 +168,7 @@ html {
   }
 
   .slide {
-    opacity: 1;
+    opacity: 0;
   }
   @keyframes slideout {
     from {
@@ -182,9 +183,9 @@ html {
     height: 61.8vh;
     width: 100%;
   }
-  .active {
+  .slide .active {
     position: relative;
-    // animation: slideAnimation 1s;
+    // animation: slideAnimation 1s ease-in-out;
     opacity: 1;
   }
 
@@ -218,7 +219,7 @@ html {
   .card {
     border: 2px solid #bcd180;
     border-radius: 5%;
-    margin:2rem
+    margin: 2rem;
   }
 
   .image {
@@ -256,6 +257,55 @@ html {
   text-align: right;
 }
 
+.faq {
+  position: relative;
+  top: 5em;
+  width: 100%;
+  display: flex;
+  height: fit-content;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .accordion {
+    width: 60%;
+  }
+  .item {
+    position: relative;
+    background-color: aliceblue;
+    margin-bottom: 1em;
+    padding: 10px 20px;
+  }
+  .title {
+    display: flex;
+    cursor: pointer;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .content {
+    position: absolute;
+    display: flex;
+    overflow: hidden;
+    transition: all 0.5s cubic-bezier(0, 1, 0, 1);
+
+    p {
+      position: absolute;
+    }
+  }
+  .content.show {
+    position: relative;
+    height: auto;
+    max-height: 9999px;
+    transition: all 0.5s cubic-bezier(1, 0, 1, 0);
+    p {
+      position: relative;
+    }
+  }
+}
+
 .contact {
   position: relative;
   top: 5em;
@@ -283,9 +333,11 @@ html {
     }
   }
 }
+
 .footer {
   position: relative;
-  top: 5em;
+  top: 5.2em;
+  bottom: 0px;
   background-color: #9dc6da;
   display: inline-flex;
   width: inherit;

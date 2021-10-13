@@ -73,7 +73,7 @@ function Slider({ lng }) {
             return (
               <div
                 className={index === current ? "slide active" : "slide"}
-                key={index + 1}
+                key={index }
               >
                 {
                   <>

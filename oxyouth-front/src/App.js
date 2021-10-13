@@ -33,13 +33,11 @@ function App() {
   }, [location]);
 
   return (
-      <div className="App">
-        <Header logo={Logo} t={t} lng={lng} />
-
-        <Main lng={lng} />
-
-        <Footer lng={lng} />
-      </div>
+    <div className="App">
+      <Header logo={Logo} t={t} lng={lng} />
+      <Main lng={lng} />
+      <Footer lng={lng} />
+    </div>
   );
 }
 
