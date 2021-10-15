@@ -2,14 +2,17 @@
 $myFont: "Open Sans Hebrew", sans-serif;
 $FontSize: 18px;
 
+html {
+  box-sizing: border-box;
+}
+
+body {
+  box-sizing: border-box;
+}
 *,
 *::before,
 *::after {
   box-sizing: inherit;
-}
-
-html {
-  box-sizing: border-box;
 }
 
 #root {
@@ -130,11 +133,16 @@ html {
 
 .slider {
   position: relative;
-  overflow: hidden;
   top: 5em;
-  display: -webkit-inline-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   height: 61.8vh;
-  width: 100%;
+
+  box-sizing: border-box;
+  overflow: hidden;
+  margin: 1em;
+  width: 100vw;
 
   .right-arrow {
     position: absolute;
@@ -160,7 +168,7 @@ html {
   .desc {
     z-index: 10;
     position: absolute;
-    top: 75%;
+    top: 50%;
     right: 3em;
     font-size: 4rem;
     color: white;
@@ -168,37 +176,26 @@ html {
   }
 
   .slide {
+    display: flex;
     opacity: 0;
-  }
-  @keyframes slideout {
-    from {
-      right: 100px;
-    }
-    to {
-      right: 100%;
-    }
+    transform: translateX(0);
+    transition: all 1s ease-in-out ;
+    position: absolute;
   }
 
-  img {
-    height: 61.8vh;
+  .image {
+    display: inline-flex;
     width: 100%;
   }
-  .slide .active {
-    position: relative;
-    // animation: slideAnimation 1s ease-in-out;
+  
+
+  .active {
     opacity: 1;
+    transition-duration: 1s;
+    transform: scale(1.08);
   }
 
-  @keyframes slideAnimation {
-    from {
-      opacity: 0.5;
-      left: 100px;
-    }
-    to {
-      opacity: 1;
-      left: 0px;
-    }
-  }
+ 
 }
 
 .products {
@@ -357,7 +354,7 @@ html {
   top: 5em;
   display: grid;
   height: fit-content;
-  width: 100vw;
+  width: 100%;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr 1fr;
   align-items: center;

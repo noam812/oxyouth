@@ -5,6 +5,8 @@ import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import Loader from "react-loader-spinner";
 import { FaArrowAltCircleRight, FaArrowAltCircleLeft } from "react-icons/fa";
 
+const slide =document.querySelector('slide')
+
 const client = axios.create({
   baseURL: "http://localhost:3001/api/slider",
 });
@@ -14,11 +16,13 @@ function Slider({ lng }) {
   const [current, setCurrent] = useState(0);
   const [isLoading, setLoading] = useState(false);
   const lang = lng;
+  console.log(slide);
 
   const length = sliderData.length;
 
   const nextSlide = () => {
     setCurrent(current === length - 1 ? 0 : current + 1);
+  
   };
 
   const prevSlide = () => {
@@ -73,30 +77,26 @@ function Slider({ lng }) {
             return (
               <div
                 className={index === current ? "slide active" : "slide"}
-                key={index }
+                key={index}
               >
-                {
-                  <>
-                    <img
-                      src={slide.image}
-                      alt={`${index}`}
-                      className={`${index + 1}`}
-                    />
-                    <Link
-                      to={
-                        lang === "he"
-                          ? slide.link
-                          : slide.translations.ar.linkAr
-                      }
-                    >
-                      <h1 className="desc">
-                        {lang === "he"
-                          ? slide.desc
-                          : slide.translations.ar.descAr}
-                      </h1>
-                    </Link>
-                  </>
-                }
+                <>
+                  <img
+                    src={slide.image}
+                    alt={`${index}`}
+                    className={`image ${index + 1}`}
+                  />
+                  <Link
+                    to={
+                      lang === "he" ? slide.link : slide.translations.ar.linkAr
+                    }
+                  >
+                    <h1 className="desc">
+                      {lang === "he"
+                        ? slide.desc
+                        : slide.translations.ar.descAr}
+                    </h1>
+                  </Link>
+                </>
               </div>
             );
           })}
