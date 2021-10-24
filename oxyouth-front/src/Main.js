@@ -1,9 +1,9 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Articles from "./components/pages/Articles";
+import ArticlesP from "./components/pages/Articles";
 import Products from "./components/pages/Products";
 import Faq from "./components/pages/Faq";
-import Contact from "./components/pages/Contact";
+import ContactP from "./components/pages/Contact";
 import Homepage from "./components/pages/homepage/Homepage";
 import Admin from "./Admin/Admin";
 import ProductSinglePage from "./components/pages/ProductSinglePage";
@@ -12,7 +12,7 @@ import ArticleSinglePage from "./components/pages/ArticleSinglePage";
 function Main({ lng }) {
 
   const ArticlesPage = () => {
-    return <Articles />;
+    return <ArticlesP lng={lang} />;
   };
 
   
@@ -25,7 +25,7 @@ function Main({ lng }) {
   };
 
   const ContactPage = () => {
-    return <Contact />;
+    return <ContactP lng={lang} />;
   };
 
   const ProductsPage = () => {

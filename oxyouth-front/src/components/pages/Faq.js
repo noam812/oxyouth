@@ -35,7 +35,7 @@ function Faq({ lng }) {
     getFaq();
   }, []);
   return (
-    <div className="faq">
+    <div className="page faq">
       {isLoading === true ? (
         <Loader
           type="Puff"

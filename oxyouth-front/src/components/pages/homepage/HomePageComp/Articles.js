@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
+import { FaWind } from "react-icons/fa";
 
 const client = axios.create({
   baseURL: "http://localhost:3001/api/articles",
@@ -33,21 +34,24 @@ function Articles({ lng }) {
       <div className="grid">
         {articlesData.map((article, index) => {
           return (
-            <Link
-              to={
-                lang === "he"
-                  ? `/articles/${article._id}`
-                  : `/ar/articles/${article._id}`
-              }
-            >
-              <div className={`title`}>
-                <h2>
-                  {lang === "he"
-                    ? article.title
-                    : article.translations.ar.titleAr}
-                </h2>
-              </div>
-            </Link>
+            <div className="box" >
+              <FaWind className="wind" />
+              <Link
+                to={
+                  lang === "he"
+                    ? `/articles/${article._id}`
+                    : `/ar/articles/${article._id}`
+                }
+              >
+                <div className={`title`}>
+                  <h2>
+                    {lang === "he"
+                      ? article.title
+                      : article.translations.ar.titleAr}
+                  </h2>
+                </div>
+              </Link>
+            </div>
           );
         })}
       </div>

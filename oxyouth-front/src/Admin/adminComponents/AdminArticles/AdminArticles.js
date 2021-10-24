@@ -12,6 +12,8 @@ const client = axios.create({
 });
 
 function AdminArticles() {
+  const [fetchHandler, setFetchHandler] = useState(false);
+
   const [articlesData, setArticlesData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [specificArt, setSpecificArt] = useState({
@@ -22,7 +24,6 @@ function AdminArticles() {
     titleAr: "",
     contentAr: "",
   });
-
 
   const handleChange = (e) => {
     setSpecificArt((x) => ({ ...x, title: e.target.value }));
@@ -74,10 +75,11 @@ function AdminArticles() {
         console.error(err);
       } finally {
         setIsLoading(false);
+        setFetchHandler(false);
       }
     };
     getArticles();
-  }, []);
+  }, [fetchHandler]);
 
   return (
     <div>
@@ -98,8 +100,13 @@ function AdminArticles() {
                 <h3>{}</h3>
                 <div>
                   <AiFillDelete
-                    onClick={() => {
-                      client.delete(`/${article._id}`);
+                    onClick={async () => {
+                      setFetchHandler(true);
+                      try {
+                        const res = await client.delete(`/${article._id}`);
+                      } catch (err) {
+                        console.error(err);
+                      }
                     }}
                   />
                 </div>

@@ -1,8 +1,8 @@
 {
-    "home" : "home",
-    "products" : "products",
-    "articles" : "articles",
-    "faq" : "faq",
-    "contact" : "contact",
+    "home" : "Home",
+    "products" : "Products",
+    "articles" : "Articles",
+    "faq" : "FaQ",
+    "contact" : "Contact",
     "content" : "לעברית"
 }

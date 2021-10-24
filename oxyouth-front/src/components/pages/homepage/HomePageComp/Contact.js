@@ -4,6 +4,7 @@ import * as Yup from "yup";
 import Loader from "react-loader-spinner";
 import axios from "axios";
 import { useTranslation } from "react-i18next";
+import { FaPaperPlane, FaCheck } from "react-icons/fa";
 
 const client = axios.create({
   baseURL: "http://localhost:3001/api/contact",
@@ -12,6 +13,7 @@ const client = axios.create({
 function Contact() {
   const [isLoading, setIsLoading] = useState(false);
   const { t } = useTranslation("contact");
+  const [submitted, setSubmitted] = useState(false);
 
   return (
     <div className="contact">
@@ -44,7 +46,9 @@ function Contact() {
           setIsLoading(true);
           try {
             const res = await client.post("/", values);
-            console.log(res);
+            if (res.status === 200) {
+              setSubmitted(true);
+            }
           } catch (err) {
             console.error(err);
           } finally {
@@ -90,8 +94,11 @@ function Contact() {
             />
           ) : (
             <button type="submit" className="submit">
-              {" "}
-              שלח פנייה
+              {submitted === true ? (
+                <FaCheck className="submit plane" />
+              ) : (
+                <FaPaperPlane className="submit plane" />
+              )}
             </button>
           )}
         </Form>

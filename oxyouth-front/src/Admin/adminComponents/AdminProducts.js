@@ -14,6 +14,7 @@ const client = axios.create({
 function AdminProducts() {
   const [productsData, setProductsData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [fetchHandler, setFetchHandler] = useState(false);
 
   //Fetch items from DB as soon as component mounts. and set them to sliderData state.
   useEffect(() => {
@@ -26,10 +27,11 @@ function AdminProducts() {
         console.error(err);
       } finally {
         setIsLoading(false);
+        setFetchHandler(false);
       }
     };
     getProducts();
-  }, []);
+  }, [fetchHandler]);
 
   return (
     <>
@@ -50,8 +52,13 @@ function AdminProducts() {
                 <h3>{product.title}</h3>
                 <div>
                   <AiFillDelete
-                    onClick={() => {
-                      client.delete(`/${product._id}`);
+                    onClick={async () => {
+                      setFetchHandler(true);
+                      try {
+                        const res = await client.delete(`/${product._id}`);
+                      } catch (err) {
+                        console.error(err);
+                      }
                     }}
                   />
                 </div>

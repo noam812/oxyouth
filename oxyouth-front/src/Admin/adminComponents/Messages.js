@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Loader from "react-loader-spinner";
+import { AiFillDelete } from "react-icons/ai";
 
 const client = axios.create({
   baseURL: "http://localhost:3001/api/contact",
 });
 
 function Masseges() {
+  const [fetchHandler, setFetchHandler] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [messagesData, setMessagesData] = useState(null);
   const [activeMessage, setActiveMessage] = useState(null);
@@ -26,11 +28,12 @@ function Masseges() {
         console.error(err);
       } finally {
         setIsLoading(false);
+        setFetchHandler(false);
       }
     };
     getMessages();
     console.log(messagesData);
-  }, []);
+  }, [fetchHandler]);
 
   return (
     <div className="messages">
@@ -74,6 +77,16 @@ function Masseges() {
                 <button onClick={() => handleDisplay(message)}>
                   {message.opened === false ? "נקראה" : "פתח"}
                 </button>
+                <AiFillDelete
+                  onClick={async () => {
+                    setFetchHandler(true);
+                    try {
+                      const res = await client.delete(`/${message._id}`);
+                    } catch (err) {
+                      console.error(err);
+                    }
+                  }}
+                />
               </div>
             );
           })

@@ -8,6 +8,7 @@ function Uploader({ onUploaded }) {
   const [progress, setProgress] = useState(0);
   const [error, setError] = useState("");
 
+  
   const handChange = (e) => {
     const file = e.target.files[0];
     if (file) {
@@ -24,10 +25,7 @@ function Uploader({ onUploaded }) {
   const handleUpdate = async () => {
     if (image) {
       const storageRef = ref(storage, `images/${image.name}`);
-      const downloadUrl = await getDownloadURL(storageRef);
-      console.log(downloadUrl);
-      setUrl(downloadUrl);
-      onUploaded(downloadUrl);
+
       const upload = uploadBytesResumable(storageRef, image);
 
       upload.on(
@@ -43,6 +41,8 @@ function Uploader({ onUploaded }) {
         },
         () => {
           getDownloadURL(upload.snapshot.ref).then((downloadURL) => {
+            setUrl(downloadURL);
+            onUploaded(downloadURL);
             setProgress(0);
           });
         }

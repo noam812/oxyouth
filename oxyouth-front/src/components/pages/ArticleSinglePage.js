@@ -32,7 +32,7 @@ function ArticleSinglePage({ lng }) {
   }, []);
 
   return (
-    <div className= "article">
+    <div className= "page article">
       {isLoading === true ? (
         <Loader
           type="Puff"
@@ -42,7 +42,7 @@ function ArticleSinglePage({ lng }) {
           visible={isLoading}
         />
       ) : (
-        <div  >
+        <div className='container' >
           <h1>
             {lang === "he"
               ? articleData.title

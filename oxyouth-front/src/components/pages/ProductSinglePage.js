@@ -34,7 +34,7 @@ function ProductSinglePage({ lng }) {
   }, []);
 
   return (
-    <div className="single product">
+    <div className="page">
       {isLoading === true ? (
         <Loader
           type="Puff"
@@ -44,8 +44,8 @@ function ProductSinglePage({ lng }) {
           visible={isLoading}
         />
       ) : (
-        <div>
-          <img src={productsData.image} alt="product_pic" />;
+        <div className="single-product">
+          <img src={productsData.image} alt="product_pic" />
           <h1>
             {lang === "he"
               ? productsData.title
