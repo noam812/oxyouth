@@ -2,13 +2,13 @@ import React, { useState } from "react";
 import { storage } from "./firebaseConfig";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 
+
 function Uploader({ onUploaded }) {
   const [image, setImage] = useState(null);
   const [url, setUrl] = useState("");
   const [progress, setProgress] = useState(0);
   const [error, setError] = useState("");
 
-  
   const handChange = (e) => {
     const file = e.target.files[0];
     if (file) {
@@ -54,6 +54,11 @@ function Uploader({ onUploaded }) {
 
   return (
     <div>
+      {url ? (
+        <img src={url} alt="logo" style={{ height: 150 }} />
+      ) : (
+        <p>picture</p>
+      )}
       <div>
         <input type="file" onChange={handChange} />
         <button onClick={handleUpdate}> Upload</button>
@@ -62,11 +67,6 @@ function Uploader({ onUploaded }) {
         {progress > 0 ? <progress value={progress} max="100" /> : ""}
         <p style={{ color: "red" }}>{error}</p>
       </div>
-      {url ? (
-        <img src={url} alt="logo" style={{ height: 150 }} />
-      ) : (
-        <p>picture</p>
-      )}
     </div>
   );
 }

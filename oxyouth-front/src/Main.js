@@ -9,6 +9,10 @@ import Admin from "./Admin/Admin";
 import ProductSinglePage from "./components/pages/ProductSinglePage";
 import ArticleSinglePage from "./components/pages/ArticleSinglePage";
 
+/**
+ * @Main - containes all frontEnd routing and components.
+ * 
+ */
 function Main({ lng }) {
 
   const ArticlesPage = () => {

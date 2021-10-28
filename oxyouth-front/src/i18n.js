@@ -15,6 +15,12 @@ import articlesAr from "./locales/ar/articles.json";
 import footerHe from "./locales/he/footer.json";
 import footerAr from "./locales/ar/footer.json";
 
+/**
+ * @imports Are the translation files from locales folder.
+ * @const resources - Object for 18n initialization. containes all translation files with keyname. 
+ * 
+ */
+
 const resources = {
   he: {
     translation: navbarHe,
@@ -35,6 +41,8 @@ const resources = {
     footer: footerAr,
   },
 };
+
+// 18n initialization - additional plugins can be added.  
 
 i18n.use(initReactI18next).init({
   resources,

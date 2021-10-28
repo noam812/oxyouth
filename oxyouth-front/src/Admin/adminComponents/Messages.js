@@ -15,10 +15,9 @@ function Masseges() {
 
   const handleDisplay = (active) => {
     setActiveMessage(active);
-    console.log(active);
     setActiveMessage((x) => ({ ...x, opened: true }));
-    console.log(activeMessage);
   };
+
   useEffect(() => {
     const getMessages = async () => {
       try {
@@ -32,8 +31,9 @@ function Masseges() {
       }
     };
     getMessages();
-    console.log(messagesData);
   }, [fetchHandler]);
+
+  
 
   return (
     <div className="messages">

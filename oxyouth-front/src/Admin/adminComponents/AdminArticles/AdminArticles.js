@@ -3,7 +3,6 @@ import axios from "axios";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import EditorToolbar, { modules, formats } from "./EditorToolbar";
-
 import Loader from "react-loader-spinner";
 import { AiFillDelete } from "react-icons/ai";
 
@@ -11,15 +10,16 @@ const client = axios.create({
   baseURL: "http://localhost:3001/api/articles",
 });
 
+
 function AdminArticles() {
   const [fetchHandler, setFetchHandler] = useState(false);
-
   const [articlesData, setArticlesData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [specificArt, setSpecificArt] = useState({
     title: "",
     content: "",
   });
+
   const [specificArtTrans, setSpecificArtTrans] = useState({
     titleAr: "",
     contentAr: "",
@@ -43,6 +43,8 @@ function AdminArticles() {
     setSpecificArtTrans((x) => ({ ...x, contentAr: value }));
     console.log(specificArtTrans);
   };
+
+
   const handleSubmit = async () => {
     setIsLoading(true);
     try {
@@ -56,7 +58,6 @@ function AdminArticles() {
           },
         },
       });
-      console.log(res);
     } catch (err) {
       console.error(err);
     } finally {
@@ -64,6 +65,8 @@ function AdminArticles() {
     }
   };
 
+
+// Get articles from DB on component mount
   useEffect(() => {
     const getArticles = async () => {
       setIsLoading(true);

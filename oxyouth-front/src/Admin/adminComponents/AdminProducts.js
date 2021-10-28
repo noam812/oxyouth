@@ -116,7 +116,7 @@ function AdminProducts() {
             }),
           }),
         })}
-        onSubmit={async (values) => {
+        onSubmit={async (values, { resetForm }) => {
           setIsLoading(true);
           try {
             const res = await client.post("/", values);
@@ -124,6 +124,7 @@ function AdminProducts() {
             console.error(err);
           } finally {
             setIsLoading(false);
+            resetForm();
           }
         }}
       >
@@ -136,14 +137,16 @@ function AdminProducts() {
           handleSubmit,
           isSubmitting,
           setFieldValue,
-          /* and other goodies */
         }) => (
           <Form className="form">
             <div className="form_table">
               <label className="label" htmlFor="image">
                 קישור לתמונה
               </label>
-              <Uploader onUploaded={(url) => setFieldValue("image", url)} />
+              <Uploader
+                type="button"
+                onUploaded={(url) => setFieldValue("image", url)}
+              />
               <Field
                 className="field"
                 name="image"

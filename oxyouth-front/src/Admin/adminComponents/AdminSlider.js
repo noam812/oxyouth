@@ -34,11 +34,6 @@ function AdminSlider() {
     getSlides();
   }, [fetchHandler]);
 
-  /**
-   * 2 main part to this @returns
-   * 1. map sliderData - CSS grid responsive auto-fill * include delete feature for each item.
-   * 2. Form used with Formik- based on ImagesSlider Schema - to upliad new Data.
-   */
   return (
     <>
       <div className="grid">
@@ -109,80 +104,81 @@ function AdminSlider() {
               }),
             }),
           })}
-          onSubmit={async (values) => {
+          onSubmit={async (values, { resetForm }) => {
             setIsLoading(true);
+            console.log(values);
+            
             try {
               const res = await client.post("/", values);
-              if (res.status === 200) {
-                setFetchHandler(true);
-              }
+              setFetchHandler(true);
               console.log(res);
             } catch (err) {
-              console.error(err);
+              console.error({err});
             } finally {
               setIsLoading(false);
+              resetForm();
             }
           }}
         >
           {({
-         values,
-         errors,
-         touched,
-         handleChange,
-         handleBlur,
-         handleSubmit,
-         isSubmitting,
-         setFieldValue
-         /* and other goodies */
-       }) =>( <Form className="form">
-            <div className="form_table">
-              <label className="label" htmlFor="image">
-                קישור לתמונה
-              </label>
-              <Uploader onUploaded={url => setFieldValue('image', url)}/>
-              <Field
-                className="field"
-                name="image"
-                placeholder="https://images.unsplash.com/"
-              />
-              <ErrorMessage className="error" name="image" />
-              <label className="label" htmlFor="desc">
-                תיאור
-              </label>
-              <Field className="field" name="desc" />
-              <ErrorMessage className="error" name="desc" />
-              <label className="label" htmlFor="link">
-                קישור
-              </label>
-              <Field className="field" name="link" />
-              <ErrorMessage className="error" name="link" />
-            </div>
-            <div className="form_table ar">
-              <label className="label" htmlFor="translations.ar.descAr">
-                תרגום :תיאור
-              </label>
-              <Field className="field" name="translations.ar.descAr" />
-              <ErrorMessage className="error" name="translations.ar.descAr" />
-              <label className="label" htmlFor="translations.ar.linkAr">
-                תרגום :קישור
-              </label>
-              <Field className="field" name="translations.ar.linkAr" />
-              <ErrorMessage className="error" name="translations.ar.linkAr" />
-            </div>
-            {isLoading === true ? (
-              <Loader
-                type="Puff"
-                color="#00BFFF"
-                height={50}
-                width={50}
-                visible={isLoading}
-              />
-            ) : (
-              <button type="submit" className="submit">
-                הוסף
-              </button>
+            values,
+            errors,
+            touched,
+            handleChange,
+            handleBlur,
+            handleSubmit,
+            isSubmitting,
+            setFieldValue,
+            
+          }) => ( <Form className="form">
+              <div className="form_table">
+                <label className="label" htmlFor="image">
+                  קישור לתמונה
+                </label>
+                <Uploader type="button" onUploaded={(url) => setFieldValue('image', url)} />
+                <Field
+                  className="field"
+                  name="image"
+                  placeholder="https://images.unsplash.com/"
+                />
+                <ErrorMessage className="error" name="image" />
+                <label className="label" htmlFor="desc">
+                  תיאור
+                </label>
+                <Field className="field" name="desc" />
+                <ErrorMessage className="error" name="desc" />
+                <label className="label" htmlFor="link">
+                  קישור
+                </label>
+                <Field className="field" name="link" />
+                <ErrorMessage className="error" name="link" />
+              </div>
+              <div className="form_table ar">
+                <label className="label" htmlFor="translations.ar.descAr">
+                  תרגום :תיאור
+                </label>
+                <Field className="field" name="translations.ar.descAr" />
+                <ErrorMessage className="error" name="translations.ar.descAr" />
+                <label className="label" htmlFor="translations.ar.linkAr">
+                  תרגום :קישור
+                </label>
+                <Field className="field" name="translations.ar.linkAr" />
+                <ErrorMessage className="error" name="translations.ar.linkAr" />
+              </div>
+              {isLoading === true ? (
+                <Loader
+                  type="Puff"
+                  color="#00BFFF"
+                  height={50}
+                  width={50}
+                  visible={isLoading}
+                />
+              ) : (
+                <button type="submit" className="submit">
+                  הוסף
+                </button>
               )}
-          </Form>
+            </Form>
           )}
         </Formik>
       </div>

@@ -1,5 +1,5 @@
 const express = require("express");
-const mongodb  = require("mongodb");
+const mongodb = require("mongodb");
 const router = express.Router();
 const SliderImage = require("../models/sliderImage");
 
@@ -18,7 +18,6 @@ router.delete("/:id", async (req, res) => {
       _id: new mongodb.ObjectId(req.params.id),
     });
     res.redirect("/");
-    
   } catch (err) {
     console.error(err);
   }
@@ -31,8 +30,8 @@ router.post("/", async (req, res) => {
     link: req.body.link,
     translations: {
       ar: {
-        descAr: req.body.desc,
-        linkAr: req.body.link,
+        descAr: req.body.translations.ar.descAr,
+        linkAr: req.body.translations.ar.linkAr,
       },
     },
   });

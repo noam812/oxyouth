@@ -3,9 +3,13 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import Loader from "react-loader-spinner";
-import { FaArrowAltCircleRight, FaArrowAltCircleLeft } from "react-icons/fa";
+import {
+  FaCircle,
+  FaArrowAltCircleRight,
+  FaArrowAltCircleLeft,
+} from "react-icons/fa";
 
-const slide =document.querySelector('slide')
+const slide = document.querySelector("slide");
 
 const client = axios.create({
   baseURL: "http://localhost:3001/api/slider",
@@ -22,7 +26,6 @@ function Slider({ lng }) {
 
   const nextSlide = () => {
     setCurrent(current === length - 1 ? 0 : current + 1);
-  
   };
 
   const prevSlide = () => {

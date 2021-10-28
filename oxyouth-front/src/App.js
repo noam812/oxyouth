@@ -5,7 +5,7 @@ import { BrowserRouter as Router, useLocation } from "react-router-dom";
 // Logostic imports
 import Footer from "./Footer";
 import Header from "./components/Header/Header";
-import Logo from "../src/images/logo/logo.png";
+import Logo from "../src/images/logo/logo2.png";
 import Main from "./Main";
 import { useTranslation } from "react-i18next";
 import { Suspense } from "react";

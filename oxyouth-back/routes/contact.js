@@ -21,6 +21,18 @@ router.get("/:id", async (req, res) => {
   }
 });
 
+// router.post("/:id", async (req, res) => {
+//   try {
+//     const updateMessage = await contactModel.updateOne(
+//       // { _id: new mongodb.ObjectId(req.params.id) },
+//       { $set: { opened: req.params.opened } }
+//     );
+//     console.log(updateMessage);
+//   } catch (err) {
+//     console.error(err);
+//   }
+// });
+
 router.post("/", async (req, res) => {
   const contact = new contactModel({
     fullname: req.body.fullname,
