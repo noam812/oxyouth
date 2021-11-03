@@ -10,7 +10,6 @@ const client = axios.create({
   baseURL: "http://localhost:3001/api/articles",
 });
 
-
 function AdminArticles() {
   const [fetchHandler, setFetchHandler] = useState(false);
   const [articlesData, setArticlesData] = useState([]);
@@ -44,7 +43,6 @@ function AdminArticles() {
     console.log(specificArtTrans);
   };
 
-
   const handleSubmit = async () => {
     setIsLoading(true);
     try {
@@ -65,8 +63,7 @@ function AdminArticles() {
     }
   };
 
-
-// Get articles from DB on component mount
+  // Get articles from DB on component mount
   useEffect(() => {
     const getArticles = async () => {
       setIsLoading(true);
@@ -99,8 +96,8 @@ function AdminArticles() {
           articlesData.map((article, index) => {
             return (
               <div className="card">
-                <h1>{article.title} </h1>
-                <h3>{}</h3>
+                <h3>{article.title} </h3>
+
                 <div>
                   <AiFillDelete
                     onClick={async () => {

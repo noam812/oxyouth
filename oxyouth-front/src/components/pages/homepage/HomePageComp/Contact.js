@@ -7,6 +7,7 @@ import { useTranslation } from "react-i18next";
 import { FaPaperPlane, FaCheck } from "react-icons/fa";
 import pattern from "../../../../images/logo/logo2.png";
 
+// TODO: server url in prod (dup)
 const client = axios.create({
   baseURL: "http://localhost:3001/api/contact",
 });
@@ -21,9 +22,9 @@ function Contact() {
       {/* <h1>{t("header")}</h1> */}
       <div className="container">
         <div className="description">
-          <h3>צרו קשר</h3>
-          <h1>תרגישו בנוח לשלוח לנו הודעה </h1>
-          <p> מלאו את הטופס לכל פנייה או שאלה ונחזור אליכם בהקדם האפשרי</p>
+          <h3>{t("header")}</h3>
+          <h1>{t("header2")}</h1>
+          <p>{t("paragraph")}</p>
         </div>
         <Formik
           initialValues={{

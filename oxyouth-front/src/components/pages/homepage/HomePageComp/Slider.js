@@ -41,6 +41,7 @@ function Slider({ lng }) {
           setSliderData(res.data);
         }
       } catch (err) {
+        // TODO: remove
         alert(err);
       } finally {
         setLoading(false);

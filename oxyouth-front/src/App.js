@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-//Software-middleware imports
+// Software-middleware imports
 import "./App.scss";
 import { BrowserRouter as Router, useLocation } from "react-router-dom";
 // Logostic imports
@@ -8,14 +8,19 @@ import Header from "./components/Header/Header";
 import Logo from "../src/images/logo/logo2.png";
 import Main from "./Main";
 import { useTranslation } from "react-i18next";
-import { Suspense } from "react";
+import { auth } from "./components/firebaseConfig";
+import { AdminUID } from "./config";
+import { onAuthStateChanged } from "@firebase/auth";
 
 function App() {
   const [lng, setLng] = useState("he");
+  const [loginState, setLoginState] = useState(true);
+
   const { t, i18n } = useTranslation("translation");
   const location = useLocation().pathname;
 
   useEffect(() => {
+    // TODO: ugly
     if (
       location === "/ar" ||
       location === "/ar/articles" ||
@@ -32,11 +37,18 @@ function App() {
     }
   }, [location]);
 
+  onAuthStateChanged(auth, (user) => {
+    if (user?.uid === AdminUID) {
+      setLoginState(true);
+    } else {
+      setLoginState(false);
+    }
+  });
   return (
     <div className="App">
       <Header logo={Logo} t={t} lng={lng} />
-      <Main lng={lng} />
-      <Footer lng={lng} />
+      <Main lng={lng} isAuth={loginState} />
+      <Footer lng={lng} isAuth={loginState}/>
     </div>
   );
 }

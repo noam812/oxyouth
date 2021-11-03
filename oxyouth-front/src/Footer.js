@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import Logo from "./images/logo/logo.png";
 import { useTranslation } from "react-i18next";
 
-function Footer() {
+function Footer({ isAuth }) {
   const { t } = useTranslation("footer");
   return (
     <div className="footer">
@@ -37,7 +37,17 @@ function Footer() {
           </Link>
         </ul>
       </div>
+      <Link to="/login">
+        <li> {isAuth ? "מחובר" : "כניסה"} </li>
+      </Link>
 
+      {isAuth ? (
+        <Link to="/admin">
+          <li>כניסת מנהל</li>
+        </Link>
+      ) : (
+        ""
+      )}
       <div className="footer_cr">
         <p> &copy;2021 Oxyouth </p>
       </div>

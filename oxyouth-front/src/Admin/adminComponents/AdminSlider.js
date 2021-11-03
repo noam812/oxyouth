@@ -133,7 +133,7 @@ function AdminSlider() {
           }) => ( <Form className="form">
               <div className="form_table">
                 <label className="label" htmlFor="image">
-                  קישור לתמונה
+                העלה תמונה
                 </label>
                 <Uploader type="button" onUploaded={(url) => setFieldValue('image', url)} />
                 <Field

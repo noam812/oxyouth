@@ -5,6 +5,7 @@ import HomepageProducts from "./HomePageComp/HomepageProducts";
 import About from "./HomePageComp/About";
 import Articles from "./HomePageComp/Articles";
 import Contact from "./HomePageComp/Contact";
+
 function Homepage({ lng }) {
   const lang = lng;
   return (

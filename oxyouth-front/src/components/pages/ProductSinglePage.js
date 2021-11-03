@@ -45,7 +45,7 @@ function ProductSinglePage({ lng }) {
         />
       ) : (
         <div className="single-product">
-          <img src={productsData.image} alt="product_pic" />
+          <img className='pic' src={productsData.image} alt="product_pic" />
           <h1>
             {lang === "he"
               ? productsData.title

@@ -141,7 +141,7 @@ function AdminProducts() {
           <Form className="form">
             <div className="form_table">
               <label className="label" htmlFor="image">
-                קישור לתמונה
+                העלה תמונה
               </label>
               <Uploader
                 type="button"

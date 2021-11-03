@@ -4,6 +4,9 @@ import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import { FaWind } from "react-icons/fa";
 
+// TODO: server url in prod
+// window.location.host
+// process.env.NODE_ENV === 'development' ? 'localhost:3001' : window.l
 const client = axios.create({
   baseURL: "http://localhost:3001/api/articles",
 });
@@ -34,7 +37,7 @@ function Articles({ lng }) {
       <div className="grid">
         {articlesData.map((article, index) => {
           return (
-            <div className="box" >
+            <div className="box">
               <FaWind className="wind" />
               <Link
                 to={

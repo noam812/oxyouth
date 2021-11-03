@@ -11,15 +11,23 @@ router.get("/", async (req, res) => {
     console.error(err);
   }
 });
+//TODO :
+function dbMethodHandler(dbOperation) {
+  return async (req, res) => {
+    try {
+      const result = await dbOperation(req);
+      res.send(result);
+    } catch (e) {
+      res.status(400).send(e.message);
+      console.error(e);
+    }
+  };
+}
 
-router.get("/:id", async (req, res) => {
-  try {
-    const articleData = await ArticleModel.findById(req.params.id);
-    res.send(articleData);
-  } catch (err) {
-    console.log(err);
-  }
-});
+router.get(
+  "/:id",
+  dbMethodHandler((req) => ArticleModel.findById(req.params.id))
+);
 
 router.delete("/:id", async (req, res) => {
   try {
