@@ -106,14 +106,12 @@ function AdminSlider() {
           })}
           onSubmit={async (values, { resetForm }) => {
             setIsLoading(true);
-            console.log(values);
-            
+
             try {
               const res = await client.post("/", values);
               setFetchHandler(true);
-              console.log(res);
             } catch (err) {
-              console.error({err});
+              console.error({ err });
             } finally {
               setIsLoading(false);
               resetForm();
@@ -129,13 +127,16 @@ function AdminSlider() {
             handleSubmit,
             isSubmitting,
             setFieldValue,
-            
-          }) => ( <Form className="form">
+          }) => (
+            <Form className="form">
               <div className="form_table">
                 <label className="label" htmlFor="image">
-                העלה תמונה
+                  העלה תמונה
                 </label>
-                <Uploader type="button" onUploaded={(url) => setFieldValue('image', url)} />
+                <Uploader
+                  type="button"
+                  onUploaded={(url) => setFieldValue("image", url)}
+                />
                 <Field
                   className="field"
                   name="image"

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import Articles from "./homepage/HomePageComp/Articles";
 
 function ArticlesP({ lng }) {

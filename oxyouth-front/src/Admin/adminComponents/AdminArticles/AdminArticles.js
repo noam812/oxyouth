@@ -26,21 +26,17 @@ function AdminArticles() {
 
   const handleChange = (e) => {
     setSpecificArt((x) => ({ ...x, title: e.target.value }));
-    console.log(specificArt);
   };
   const handleChangeRich = (value) => {
     setSpecificArt((x) => ({ ...x, content: value }));
-    console.log(specificArt);
   };
 
   const handleChangeTrans = (e) => {
     setSpecificArtTrans((x) => ({ ...x, titleAr: e.target.value }));
-    console.log(specificArtTrans);
   };
 
   const handleChangeRichTrans = (value) => {
     setSpecificArtTrans((x) => ({ ...x, contentAr: value }));
-    console.log(specificArtTrans);
   };
 
   const handleSubmit = async () => {
@@ -70,7 +66,7 @@ function AdminArticles() {
       try {
         const res = await client.get("/");
         setArticlesData(res.data);
-        console.log(articlesData);
+        
       } catch (err) {
         console.error(err);
       } finally {

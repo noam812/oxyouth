@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
-//TODO: c -> C
-const contactSchema = mongoose.Schema({
+
+const ContactSchema = mongoose.Schema({
   fullname: { type: String, required: true },
   phone: { type: String, required: true },
   email: { type: String, required: true },
@@ -9,4 +9,4 @@ const contactSchema = mongoose.Schema({
   opened: { type : Boolean, required: true },
 });
 
-module.exports = mongoose.model("contact", contactSchema);
+module.exports = mongoose.model("contact", ContactSchema);

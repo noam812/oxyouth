@@ -17,21 +17,10 @@ router.get("/:id", async (req, res) => {
     const contactData = await contactModel.findById(req.params.id);
     res.send(contactData);
   } catch (err) {
-    console.log(err);
+    console.error(err);
   }
 });
 
-// router.post("/:id", async (req, res) => {
-//   try {
-//     const updateMessage = await contactModel.updateOne(
-//       // { _id: new mongodb.ObjectId(req.params.id) },
-//       { $set: { opened: req.params.opened } }
-//     );
-//     console.log(updateMessage);
-//   } catch (err) {
-//     console.error(err);
-//   }
-// });
 
 router.post("/", async (req, res) => {
   const contact = new contactModel({

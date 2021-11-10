@@ -1,21 +1,11 @@
 import React, { useState } from "react";
-import { Route, Redirect } from "react-router";
 import { auth } from "../firebaseConfig";
-import {
-  signInWithEmailAndPassword,
-  onAuthStateChanged,
-  signOut,
-} from "firebase/auth";
+import { signInWithEmailAndPassword, signOut } from "firebase/auth";
 
 function Login() {
   const [loginEmail, setLoginEmail] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
-
-
-//   onAuthStateChanged(auth, (currentUser) => {
-//     setAdmin(currentUser);
-//   });
 
   const login = async () => {
     setErrorMessage("");
@@ -25,7 +15,6 @@ function Login() {
         loginEmail,
         loginPassword
       );
-      console.log(user);
     } catch (error) {
       console.error(error.message);
       setErrorMessage(error.message);
@@ -40,35 +29,30 @@ function Login() {
   };
 
   return (
-  
-      <div className="login">
-        <h1> הכנס פרטים</h1>
-        <h3> Login </h3>
-        <input
-          className="field"
-          placeholder="Email..."
-          value={loginEmail}
-          onChange={(event) => {
-            setLoginEmail(event.target.value);
-          }}
-        />
-        <input
-          className="field"
-          placeholder="Password..."
-          value={loginPassword}
-          onChange={(event) => {
-            setLoginPassword(event.target.value);
-          }}
-        />
+    <div className="login">
+      <h1> הכנס פרטים</h1>
+      <h3> Login </h3>
+      <input
+        className="field"
+        placeholder="Email..."
+        value={loginEmail}
+        onChange={(event) => {
+          setLoginEmail(event.target.value);
+        }}
+      />
+      <input
+        className="field"
+        placeholder="Password..."
+        value={loginPassword}
+        onChange={(event) => {
+          setLoginPassword(event.target.value);
+        }}
+      />
 
-        <button onClick={login}> Login</button>
-        {errorMessage}
-
-        
-
-        <button onClick={logout}> Sign Out </button>
-      </div>
-
+      <button onClick={login}> Login</button>
+      {errorMessage}
+      <button onClick={logout}> Sign Out </button>
+    </div>
   );
 }
 

@@ -17,7 +17,7 @@ router.get("/:id", async (req, res) => {
     const faqData = await FaqModel.findById(req.params.id);
     res.send(faqData);
   } catch (err) {
-    console.log(err);
+    console.error(err);
   }
 });
 

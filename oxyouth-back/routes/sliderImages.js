@@ -8,7 +8,7 @@ router.get("/", async (req, res) => {
     const sliderImagesData = await SliderImage.find({});
     res.send(sliderImagesData);
   } catch (err) {
-    console.log(err);
+    console.error(err);
   }
 });
 

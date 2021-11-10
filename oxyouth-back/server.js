@@ -2,6 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const bodyParser = require("body-parser");
+const path = require("path");
 require("dotenv").config();
 
 async function main() {
@@ -33,8 +34,13 @@ async function main() {
   app.use("/api/articles", articlesRoute);
 
   app.use("/api/contact", contactRoute);
-  
+
   app.use("/api/faq", faqRoute);
+
+  app.use(express.static(path.join(__dirname, "build")));
+  app.get("/", (req, res) =>
+    res.sendFile(path.join(__dirname, "build/index.html"))
+  );
 
   app.listen(PORT, () => console.log("listening"));
 }

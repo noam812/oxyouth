@@ -3,16 +3,11 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import Loader from "react-loader-spinner";
-import {
-  FaCircle,
-  FaArrowAltCircleRight,
-  FaArrowAltCircleLeft,
-} from "react-icons/fa";
+import { FaArrowAltCircleRight, FaArrowAltCircleLeft } from "react-icons/fa";
 
-const slide = document.querySelector("slide");
 
 const client = axios.create({
-  baseURL: "http://localhost:3001/api/slider",
+  baseURL: `http://${process.env.NODE_ENV === 'development' ? 'localhost:3001' : window.location.host}/api/slider`,
 });
 
 function Slider({ lng }) {
@@ -20,7 +15,6 @@ function Slider({ lng }) {
   const [current, setCurrent] = useState(0);
   const [isLoading, setLoading] = useState(false);
   const lang = lng;
-  console.log(slide);
 
   const length = sliderData.length;
 
@@ -41,8 +35,7 @@ function Slider({ lng }) {
           setSliderData(res.data);
         }
       } catch (err) {
-        // TODO: remove
-        alert(err);
+        console.error(err);
       } finally {
         setLoading(false);
       }

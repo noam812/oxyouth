@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import ArticlesP from "./components/pages/Articles";
 import Products from "./components/pages/Products";
@@ -9,16 +9,13 @@ import Admin from "./Admin/Admin";
 import ProductSinglePage from "./components/pages/ProductSinglePage";
 import ArticleSinglePage from "./components/pages/ArticleSinglePage";
 import Login from "./components/pages/Login";
-import { auth } from "./components/firebaseConfig";
-import { AdminUID } from "./config";
-import { onAuthStateChanged } from "@firebase/auth";
 import ProtectedRoute from "./ProtectedRoute";
 
 /**
  * @Main - containes all frontEnd routing and components.
  *
  */
-function Main({ lng ,isAuth }) {
+function Main({ lng, isAuth }) {
   // const [loginState, setLoginState] = useState(true);
 
   // onAuthStateChanged(auth, (user) => {

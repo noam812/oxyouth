@@ -106,7 +106,6 @@ function Faq() {
               if (res.status === 200) {
                 setFetchHandler(true);
               }
-              console.log(res);
             } catch (err) {
               console.error(err);
             } finally {

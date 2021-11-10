@@ -29,6 +29,8 @@ router.get(
   dbMethodHandler((req) => ArticleModel.findById(req.params.id))
 );
 
+//Private Requests - only with admin Authentication.
+
 router.delete("/:id", async (req, res) => {
   try {
     const articleDelete = await ArticleModel.deleteOne({

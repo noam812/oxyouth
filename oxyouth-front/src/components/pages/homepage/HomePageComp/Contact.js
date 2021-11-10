@@ -9,7 +9,7 @@ import pattern from "../../../../images/logo/logo2.png";
 
 // TODO: server url in prod (dup)
 const client = axios.create({
-  baseURL: "http://localhost:3001/api/contact",
+  baseURL: `http://${process.env.NODE_ENV === 'development' ? 'localhost:3001' : window.location.host}/api/contact`,
 });
 
 function Contact() {

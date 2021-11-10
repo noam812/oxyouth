@@ -9,7 +9,7 @@ router.get("/", async (req, res) => {
     const productsData = await Product.find({});
     res.send(productsData);
   } catch (err) {
-    console.log(err);
+    console.error(err);
   }
 });
 
@@ -18,7 +18,7 @@ router.get("/:id", async (req, res) => {
     const productsData = await Product.findById(req.params.id);
     res.send(productsData);
   } catch (err) {
-    console.log(err);
+    console.error(err);
   }
 });
 router.delete("/:id", async (req, res) => {

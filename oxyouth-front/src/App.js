@@ -9,15 +9,26 @@ import Logo from "../src/images/logo/logo2.png";
 import Main from "./Main";
 import { useTranslation } from "react-i18next";
 import { auth } from "./components/firebaseConfig";
-import { AdminUID } from "./config";
 import { onAuthStateChanged } from "@firebase/auth";
+
+const routes = ["", "articles", "products", "faq", "contact"];
 
 function App() {
   const [lng, setLng] = useState("he");
-  const [loginState, setLoginState] = useState(true);
-
+  const [loginState, setLoginState] = useState(false);
   const { t, i18n } = useTranslation("translation");
   const location = useLocation().pathname;
+
+ 
+
+  const handleRoutes = (language) => {
+    routes.map((route) => {
+      if (location === `/${language}/${route}`) {
+        i18n.changeLanguage("ar");
+        setLng("ar");
+      }
+    });
+  };
 
   useEffect(() => {
     // TODO: ugly
@@ -38,7 +49,7 @@ function App() {
   }, [location]);
 
   onAuthStateChanged(auth, (user) => {
-    if (user?.uid === AdminUID) {
+    if (user?.uid ==="PLN9vlZk45UOHfGzP6LzVztKBgp2") {
       setLoginState(true);
     } else {
       setLoginState(false);
@@ -48,7 +59,7 @@ function App() {
     <div className="App">
       <Header logo={Logo} t={t} lng={lng} />
       <Main lng={lng} isAuth={loginState} />
-      <Footer lng={lng} isAuth={loginState}/>
+      <Footer lng={lng} isAuth={loginState} />
     </div>
   );
 }

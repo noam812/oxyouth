@@ -6,7 +6,7 @@ import { useTranslation } from "react-i18next";
 import Loader from "react-loader-spinner";
 
 const client = axios.create({
-  baseURL: "http://localhost:3001/api/products",
+  baseURL: `http://${process.env.NODE_ENV === 'development' ? 'localhost:3001' : window.location.host}/api/products`,
 });
 
 function ProductSinglePage({ lng }) {
@@ -22,7 +22,6 @@ function ProductSinglePage({ lng }) {
       try {
         const res = await client.get(`/${id}`);
         setProductsData(res.data);
-        console.log("resData", res.data);
       } catch (err) {
         console.error(err);
       } finally {
@@ -30,7 +29,6 @@ function ProductSinglePage({ lng }) {
       }
     };
     getProducts();
-    console.log({ productsData });
   }, []);
 
   return (
