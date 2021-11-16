@@ -7,7 +7,7 @@ import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import Loader from "react-loader-spinner";
 
 const client = axios.create({
-  baseURL: "http://localhost:3001/api/faq",
+  baseURL: `http://${process.env.NODE_ENV === 'development' ? 'localhost:3001' : window.location.host}/api/faq`,
 });
 
 function Faq() {
@@ -48,7 +48,7 @@ function Faq() {
               <div className="card">
                 <img src={faq.image} alt={`${index}`} className={`img`} />
                 <h3>{faq.question}</h3>
-                <h3>{faq.answer}</h3>
+                <p>{faq.answer}</p>
                 <div>
                   <AiFillDelete
                     onClick={async () => {

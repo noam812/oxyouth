@@ -4,7 +4,11 @@ import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
 const client = axios.create({
-  baseURL: `http://${process.env.NODE_ENV === 'development' ? 'localhost:3001' : window.location.host}/api/products`,
+  baseURL: `http://${
+    process.env.NODE_ENV === "development"
+      ? "localhost:3001"
+      : window.location.host
+  }/api/products`,
 });
 
 function HomepageProducts({ lng }) {
@@ -20,7 +24,7 @@ function HomepageProducts({ lng }) {
         setProductsData(res.data);
       } catch (err) {
         console.error(err);
-      } 
+      }
     };
     getProducts();
   }, []);
@@ -31,15 +35,16 @@ function HomepageProducts({ lng }) {
       <div className="grid">
         {productsData.map((product, index) => {
           return (
+            <div key={index}> 
             <Link
               to={
                 lang === "he"
-                  ? `/products/${product._id}`
-                  : `/ar/products/${product._id}`
+                ? `/products/${product._id}`
+                : `/ar/products/${product._id}`
               }
-            >
+              >
               <div className="card" key={index}>
-                <img src={product.image} className="image" key={index} />
+                <img src={product.image} className="image" />
                 <h2>
                   {lang === "he"
                     ? product.title
@@ -52,11 +57,13 @@ function HomepageProducts({ lng }) {
                 </p>
               </div>
             </Link>
+        </div>
           );
         })}
       </div>
     </div>
-  );
-}
-
-export default HomepageProducts;
+    );
+  }
+  
+  export default HomepageProducts;
+  

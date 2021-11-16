@@ -1,7 +1,7 @@
 FROM node
 
 WORKDIR /home
-
+ 
 ADD . .
 
 RUN ["rm", ".env"]

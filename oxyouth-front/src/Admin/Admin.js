@@ -28,7 +28,7 @@ function Admin() {
   };
 
   return (
-    <div className="admin">
+    <div className="page admin">
       <div className="sidebar">
         <div className="sidebar nav">
           <ul className="list">

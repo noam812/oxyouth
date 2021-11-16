@@ -37,7 +37,7 @@ function Articles({ lng }) {
       <div className="grid">
         {articlesData.map((article, index) => {
           return (
-            <div className="box">
+            <div className="box" key={index}>
               <FaWind className="wind" />
               <Link
                 to={

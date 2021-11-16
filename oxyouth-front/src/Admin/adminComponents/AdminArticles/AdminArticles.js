@@ -7,7 +7,7 @@ import Loader from "react-loader-spinner";
 import { AiFillDelete } from "react-icons/ai";
 
 const client = axios.create({
-  baseURL: "http://localhost:3001/api/articles",
+  baseURL: `http://${process.env.NODE_ENV === 'development' ? 'localhost:3001' : window.location.host}/api/articles/`,
 });
 
 function AdminArticles() {

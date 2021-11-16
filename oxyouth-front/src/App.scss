@@ -542,7 +542,14 @@ body {
 }
 
 .page.contact {
-  height: 69vh;
+  height: fit-content;
+}
+.page.articles {
+  height: fit-content;
+}
+
+.page.faq {
+  padding: 3rem;
 }
 
 .contact {
@@ -646,7 +653,6 @@ body {
 
 .admin {
   position: relative;
-  top: 90px;
   display: grid;
   height: fit-content;
   width: 100%;

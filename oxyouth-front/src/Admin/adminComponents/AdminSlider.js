@@ -9,7 +9,7 @@ import Uploader from "../../components/Uploader";
 
 //Creating axios instance - URL to our Server Route for slider.
 const client = axios.create({
-  baseURL: "http://localhost:3001/api/slider",
+  baseURL: `http://${process.env.NODE_ENV === 'development' ? 'localhost:3001' : window.location.host}/api/slider`,
 });
 
 function AdminSlider() {
